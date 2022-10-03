@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio_5</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <style>
     .jumbotron {
-        min-height: 100vh;
+        min-height: auto;
     }
 </style>
 <body>
@@ -20,7 +22,7 @@
 
             <br>
 
-            <form action="/api/productos/guardar" method="post" autocomplete="off">
+            <form onsubmit="return addProduct(this)" autocomplete="off">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" id="nombre" class="form-control" name="title" required>
@@ -30,12 +32,25 @@
                     <input type="number" id="precio" class="form-control" name="price" step="0.01" required>
                 </div>
                 <div class="form-group">
-                    <label for="nombre">Foto URL</label>
+                    <label for="url">Foto URL</label>
                     <input type="url" id="foto" class="form-control" name="img" required>
                 </div>
 
-                <button class="btn btn-success mt-3">Enviar</button>
+                <input type="submit" class="btn btn-success mt-3" value="Enviar">
             </form>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <thead>
+                    <tr><th>Nombre</th><th>Precio</th><th>Foto</th></tr>
+                </thead>
+                <tbody id="tableBodyProd">
+                    
+                </tbody>
+            </table>
         </div>
     </div>
 
