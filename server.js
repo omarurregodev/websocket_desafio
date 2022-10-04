@@ -22,15 +22,18 @@ const productos = [
 
 const messages = [
     {
-        author: "Juan",
+        author: "Juan@gmail.com",
+        date: new Date(),
         text: "Hola que tal"
     },
     {
-        author: "Maria",
+        author: "Maria@gmail.com",
+        date: new Date(),
         text: "bien y tu"
     },
     {
-        author: "Juan",
+        author: "Juan@gmail.com",
+        date: new Date(),
         text: "Me alegra"
     }
 ];
@@ -40,16 +43,18 @@ io.on("connection", (socket) => {
     console.log("Se conectó un usuario!");
 
     socket.emit("productos", productos);
-
+    
     socket.on("new-product", (data) => {
         productos.push(data);
         io.sockets.emit("productos", productos)
     })
-
-    // socket.on("new-message", (data) => {
-    //     messages.push(data);
-    //     io.sockets.emit("messages", messages)
-    // })
+    
+    socket.emit("messages", messages);
+    
+    socket.on("new-message", (data) => {
+        messages.push(data);
+        io.sockets.emit("messages", messages)
+    })
 }) 
 
 const connectedServer = httpServer.listen(PORT, () => {

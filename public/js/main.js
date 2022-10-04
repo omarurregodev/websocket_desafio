@@ -2,7 +2,7 @@ const socket = io.connect();
 
 socket.on("productos", (data) => {
     showProductos(data)
-})
+});
 
 function showProductos(data) {
     const htmlProductos = data.map((prod) => {
@@ -12,7 +12,6 @@ function showProductos(data) {
     }).join(" ")
     document.getElementById("tableBodyProd").innerHTML = htmlProductos;
 }
-
 function addProduct(e) {
     const producto = {
         nombre: document.getElementById("nombre").value,
@@ -24,25 +23,27 @@ function addProduct(e) {
 }
 
 socket.on("messages", (data) => {
-    render(data)
+    showMessages(data);
 })
 
-function render(data) {
-    const html = data.map((element) => {
+function showMessages(data) {
+    const htmlMessages = data.map((msg) => {
         return `
         <div>
-            <strong>${element.author}: </strong>
-            <em>${element.text}</em>
+            <strong style="color: blue;">${msg.author}</strong>
+            <em style="color: brown;">${msg.date} :</em>
+            <em style="color: green;">${msg.text}</em>
         </div>
         `
     }).join(" ");
 
-    document.getElementById("mensajes").innerHTML = html;
+    document.getElementById("chatZone").innerHTML = htmlMessages;
 }
 
 function addMessages(e) {
     const mensaje = {
-        author: document.getElementById("userName").value,
+        author: document.getElementById("email").value,
+        date: new Date(),
         text: document.getElementById("texto").value
     }
     socket.emit("new-message", mensaje);
