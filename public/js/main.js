@@ -9,7 +9,7 @@ function showProductos(data) {
         return `
         <tr><td>${prod.nombre}</td><td>$ ${prod.precio}</td><td><img src="${prod.url}" width="50" alt="not found"></td></tr>
         `
-    })
+    }).join(" ")
     document.getElementById("tableBodyProd").innerHTML = htmlProductos;
 }
 

@@ -13,6 +13,17 @@
     .jumbotron {
         min-height: auto;
     }
+    .productos-container {
+        background-color: rgba(180, 180, 180, 0.5);  
+        border-radius: 1rem;     
+    }
+    .tableProductos {
+        max-height: 40vh;
+    }
+    .chat-container {
+        background-color: rgba(180, 180, 180, 0.5);  
+        border-radius: 1rem;     
+    }
 </style>
 <body>
     
@@ -41,9 +52,11 @@
         </div>
     </div>
 
-    <div class="container mt-3">
-        <div class="table-responsive">
-            <table class="table table-dark">
+    <div class="container mt-3 p-3 productos-container">
+        <br>
+        <h1>Productos Ingresados</h1>
+        <div class="table-responsive tableProductos">
+            <table class=" table table-dark">
                 <thead>
                     <tr><th>Nombre</th><th>Precio</th><th>Foto</th></tr>
                 </thead>
@@ -53,7 +66,20 @@
             </table>
         </div>
     </div>
-
+    <div class="container mt-3 p-3 chat-container">
+        <br>
+        <h1 style="color: blue;">Centro de Mensajes</h1>
+        <div class="table-responsive tableProductos">
+            <table class=" table table-dark">
+                <thead>
+                    <tr><th>Nombre</th><th>Precio</th><th>Foto</th></tr>
+                </thead>
+                <tbody id="tableBodyProd">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
