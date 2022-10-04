@@ -23,17 +23,17 @@ const productos = [
 const messages = [
     {
         author: "Juan@gmail.com",
-        date: new Date(),
+        date: new Date().toLocaleString(),
         text: "Hola que tal"
     },
     {
         author: "Maria@gmail.com",
-        date: new Date(),
+        date: new Date().toLocaleString(),
         text: "bien y tu"
     },
     {
         author: "Juan@gmail.com",
-        date: new Date(),
+        date: new Date().toLocaleString(),
         text: "Me alegra"
     }
 ];

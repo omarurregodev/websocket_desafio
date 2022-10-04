@@ -31,7 +31,7 @@ function showMessages(data) {
         return `
         <div>
             <strong style="color: blue;">${msg.author}</strong>
-            <em style="color: brown;">${msg.date} :</em>
+            <em style="color: brown;">[${msg.date}] :</em>
             <em style="color: green;">${msg.text}</em>
         </div>
         `
@@ -43,7 +43,7 @@ function showMessages(data) {
 function addMessages(e) {
     const mensaje = {
         author: document.getElementById("email").value,
-        date: new Date(),
+        date: new Date().toLocaleString(),
         text: document.getElementById("texto").value
     }
     socket.emit("new-message", mensaje);
